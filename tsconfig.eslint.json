@@ -3,10 +3,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "allowJs": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
     "skipLibCheck": true
   },
-  "files": ["index.js"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.{ts,tsx,js,jsx}"],
 }
