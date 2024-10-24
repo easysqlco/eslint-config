@@ -1,17 +1,18 @@
-import pluginJs from '@eslint/js';
+// @ts-check
+import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
-export default [
+export default tseslint.config(
   { files: ['**/*.{js,mjs,cjs,ts}'] },
   { ignores: ['node_modules', 'dist', 'public', '**/*.d.ts'] },
-  pluginJs.configs.recommended,
+  eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   {
     languageOptions: {
       parserOptions: {
-        project: './tsconfig.eslint.json',
+        projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -48,4 +49,4 @@ export default [
       'no-console': 'warn',
     },
   },
-];
+);

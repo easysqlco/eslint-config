@@ -1,6 +1,6 @@
 {
   "name": "@easysql/eslint-config",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Exports common ESLint and Prettier configuration used by EasySQL packages",
   "author": "EasySQL",
   "license": "MIT",
@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.7.9",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
