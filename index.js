@@ -32,8 +32,6 @@ export default tseslint.config(
         'warn',
         {
           semi: true,
-          singleQuote: true,
-          trailingComma: 'all',
           tabWidth: 2,
         },
       ],
