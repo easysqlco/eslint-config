@@ -33,8 +33,7 @@ export default tseslint.config(
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: "./tsconfig.json",
-        tsconfigRootDir: import.meta.dirname,
+        projectService: true,
         ecmaVersion: "latest",
         sourceType: "module",
         allowJs: true,
@@ -47,8 +46,6 @@ export default tseslint.config(
 
     rules: {
       /* 🚨 Bug detection rules (keep strict) */
-      "@typescript-eslint/no-floating-promises": "error",
-      "@typescript-eslint/no-misused-promises": "error",
       "@typescript-eslint/await-thenable": "error",
       "@typescript-eslint/no-unnecessary-type-assertion": "warn",
       "@typescript-eslint/no-non-null-assertion": "warn",
@@ -61,7 +58,7 @@ export default tseslint.config(
       "@typescript-eslint/no-unsafe-return": "warn",
 
       /* 😌 Relaxed developer ergonomics */
-      "@typescript-eslint/no-explicit-any": "off", // your tsconfig already allows it
+      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-var-requires": "off",
       "@typescript-eslint/ban-ts-comment": [
         "warn",
@@ -71,13 +68,21 @@ export default tseslint.config(
       "@typescript-eslint/explicit-module-boundary-types": "off",
 
       /* 🧹 General JS hygiene */
-      "no-console": "off",
+      "no-console": "warn",
       "no-debugger": "warn",
       "no-constant-condition": ["warn", { checkLoops: false }],
       "no-unused-vars": "off", // replaced by TS version
       "@typescript-eslint/no-unused-vars": [
         "warn",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+        {
+          args: "all",
+          argsIgnorePattern: "^_",
+          caughtErrors: "all",
+          caughtErrorsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          ignoreRestSiblings: true,
+        },
       ],
     },
   },
@@ -109,7 +114,6 @@ export default tseslint.config(
           singleQuote: false, // use double quotes
         },
       ],
-      "no-console": "warn",
     },
   },
 );

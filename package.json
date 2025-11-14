@@ -1,6 +1,6 @@
 {
   "name": "@easysql/eslint-config",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Exports common ESLint and Prettier configuration used by EasySQL packages",
   "author": "EasySQL",
   "license": "MIT",
