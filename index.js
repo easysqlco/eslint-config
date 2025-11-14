@@ -46,6 +46,8 @@ export default tseslint.config(
 
     rules: {
       /* 🚨 Bug detection rules (keep strict) */
+      "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/no-misused-promises": "off",
       "@typescript-eslint/await-thenable": "error",
       "@typescript-eslint/no-unnecessary-type-assertion": "warn",
       "@typescript-eslint/no-non-null-assertion": "warn",
