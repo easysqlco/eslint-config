@@ -1,4 +1,3 @@
-// @ts-check
 import globals from "globals";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
@@ -33,7 +32,8 @@ export default tseslint.config(
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        projectService: true,
+        project: ["./tsconfig.json"],
+        tsconfigRootDir: import.meta.dir,
         ecmaVersion: "latest",
         sourceType: "module",
         allowJs: true,
@@ -45,12 +45,12 @@ export default tseslint.config(
     },
 
     rules: {
-      /* 🚨 Bug detection rules (keep strict) */
+      /* 🚨 Bug detection rules */
       "@typescript-eslint/no-floating-promises": "off",
       "@typescript-eslint/no-misused-promises": "off",
       "@typescript-eslint/await-thenable": "error",
       "@typescript-eslint/no-unnecessary-type-assertion": "warn",
-      "@typescript-eslint/no-non-null-assertion": "warn",
+      "@typescript-eslint/no-non-null-assertion": "off",
       "@typescript-eslint/require-await": "warn",
 
       /* ⚙️ Safe runtime checks */

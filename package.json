@@ -1,6 +1,6 @@
 {
   "name": "@easysql/eslint-config",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Exports common ESLint and Prettier configuration used by EasySQL packages",
   "author": "EasySQL",
   "license": "MIT",
@@ -18,8 +18,14 @@
     "typescript-eslint",
     "easysqlco"
   ],
+  "files": [
+    "index.d.ts",
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc --build tsconfig.build.json"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
