@@ -6,8 +6,7 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
     "skipLibCheck": true,
-  },
-  "files": ["index.js"]
+    "noEmit": true
+  }
 }

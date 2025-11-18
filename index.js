@@ -1,7 +1,12 @@
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 import globals from "globals";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * ESLint 9+ Flat Config
@@ -32,8 +37,8 @@ export default tseslint.config(
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: ["./tsconfig.json"],
-        tsconfigRootDir: import.meta.dir,
+        project: [path.join(__dirname, "tsconfig.eslint.json")],
+        tsconfigRootDir: __dirname,
         ecmaVersion: "latest",
         sourceType: "module",
         allowJs: true,
