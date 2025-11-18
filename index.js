@@ -1,12 +1,7 @@
-import { fileURLToPath } from "node:url";
-import path from "node:path";
 import globals from "globals";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 /**
  * ESLint 9+ Flat Config
@@ -17,10 +12,7 @@ const __dirname = path.dirname(__filename);
  */
 
 export default tseslint.config(
-  // JavaScript base
   js.configs.recommended,
-
-  // TypeScript base (type-aware, bug catching)
   ...tseslint.configs.recommendedTypeChecked,
 
   // Project config
@@ -37,8 +29,6 @@ export default tseslint.config(
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: [path.join(__dirname, "tsconfig.eslint.json")],
-        tsconfigRootDir: __dirname,
         ecmaVersion: "latest",
         sourceType: "module",
         allowJs: true,
@@ -53,10 +43,6 @@ export default tseslint.config(
       /* 🚨 Bug detection rules */
       "@typescript-eslint/no-floating-promises": "off",
       "@typescript-eslint/no-misused-promises": "off",
-      "@typescript-eslint/await-thenable": "error",
-      "@typescript-eslint/no-unnecessary-type-assertion": "warn",
-      "@typescript-eslint/no-non-null-assertion": "off",
-      "@typescript-eslint/require-await": "warn",
 
       /* ⚙️ Safe runtime checks */
       "@typescript-eslint/no-unsafe-assignment": "warn",
@@ -73,7 +59,6 @@ export default tseslint.config(
 
       /* 🧹 General JS hygiene */
       "no-console": "warn",
-      "no-debugger": "warn",
       "no-constant-condition": ["warn", { checkLoops: false }],
       "no-unused-vars": "off", // replaced by TS version
       "@typescript-eslint/no-unused-vars": [
