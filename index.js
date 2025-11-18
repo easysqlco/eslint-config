@@ -14,6 +14,7 @@ import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
 export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
 
   // Project config
   {
@@ -49,6 +50,7 @@ export default tseslint.config(
       "@typescript-eslint/no-unsafe-call": "warn",
       "@typescript-eslint/no-unsafe-member-access": "warn",
       "@typescript-eslint/no-unsafe-return": "warn",
+      "@typescript-eslint/no-unsafe-argument": "warn",
 
       /* 😌 Relaxed developer ergonomics */
       "@typescript-eslint/no-explicit-any": "off",
