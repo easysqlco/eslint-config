@@ -3,6 +3,26 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 
+export function useTSLanguageOptions({
+  tsconfigRootDir = process.cwd(),
+  project = "./tsconfig.json",
+} = {}) {
+  return {
+    parser: tseslint.parser,
+    parserOptions: {
+      project,
+      tsconfigRootDir,
+      ecmaVersion: "latest",
+      sourceType: "module",
+      allowJs: true,
+    },
+    globals: {
+      ...globals.node,
+      ...globals.browser,
+    },
+  };
+}
+
 /**
  * ESLint 9+ Flat Config
  * Tailored for mixed TS/JS projects with your tsconfig.json
@@ -27,18 +47,7 @@ export default tseslint.config(
       "**/*.d.ts",
     ],
 
-    languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-        allowJs: true,
-      },
-      globals: {
-        ...globals.node,
-        ...globals.browser,
-      },
-    },
+    languageOptions: useTSLanguageOptions(),
 
     rules: {
       /* 🚨 Bug detection rules */
