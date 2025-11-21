@@ -1,12 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "noEmit": true,
     "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
     "skipLibCheck": true,
     "strictNullChecks": true
   },

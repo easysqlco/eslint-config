@@ -3,7 +3,7 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 
-export function useTSLanguageOptions({
+export function tsLanguageOptions({
   tsconfigRootDir = process.cwd(),
   project = "./tsconfig.json",
 } = {}) {
@@ -35,20 +35,10 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
-
   // Project config
   {
     files: ["**/*.{ts,tsx,js,jsx,mjs,cjs}"],
-    ignores: [
-      "dist/**",
-      "build/**",
-      "node_modules/**",
-      "public/**",
-      "**/*.d.ts",
-    ],
-
-    languageOptions: useTSLanguageOptions(),
-
+    languageOptions: tsLanguageOptions(),
     rules: {
       /* 🚨 Bug detection rules */
       "@typescript-eslint/no-floating-promises": "off",
@@ -86,7 +76,6 @@ export default tseslint.config(
       ],
     },
   },
-
   // JS-only override — make pure JS files more lenient
   {
     files: ["**/*.{js,jsx,mjs,cjs}"],
