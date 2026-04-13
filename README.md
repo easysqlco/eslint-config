@@ -1,4 +1,4 @@
-# @easysql/eslint-config
+# @easysqlco/eslint-config
 
 Shared ESLint flat config for EasySQL Node-oriented packages.
 
@@ -9,7 +9,7 @@ packages it imports. Consumers only need the host tools: `eslint`,
 ## Installation
 
 ```bash
-npm install --save-dev @easysql/eslint-config eslint prettier typescript
+npm install --save-dev @easysqlco/eslint-config eslint prettier typescript
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ Create `eslint.config.mjs` in the consuming package:
 ```js
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import easySqlConfig, { tsLanguageOptions } from "@easysql/eslint-config";
+import easySqlConfig, { tsLanguageOptions } from "@easysqlco/eslint-config";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -40,4 +40,4 @@ working directory. Override it when your lint config should use a dedicated
 `tsconfig.eslint.json` or a different root directory.
 
 For React packages, compose this config with
-`@easysql/eslint-config-react`.
+`@easysqlco/eslint-config-react`.

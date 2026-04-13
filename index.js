@@ -89,13 +89,13 @@ const sharedConfig = tseslint.config(
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   {
-    name: "@easysql/eslint-config/base",
+    name: "@easysqlco/eslint-config/base",
     files: SOURCE_FILES,
     languageOptions: tsLanguageOptions(),
     rules: baseRules,
   },
   {
-    name: "@easysql/eslint-config/javascript-overrides",
+    name: "@easysqlco/eslint-config/javascript-overrides",
     files: JS_SOURCE_FILES,
     languageOptions: {
       parserOptions: {
@@ -106,7 +106,7 @@ const sharedConfig = tseslint.config(
   },
   eslintPluginPrettierRecommended,
   {
-    name: "@easysql/eslint-config/prettier",
+    name: "@easysqlco/eslint-config/prettier",
     rules: prettierRules,
   },
 );

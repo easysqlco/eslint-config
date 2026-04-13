@@ -1,5 +1,5 @@
 {
-  "name": "@easysql/eslint-config",
+  "name": "@easysqlco/eslint-config",
   "version": "0.0.24",
   "description": "Shared ESLint flat config for EasySQL Node-oriented packages",
   "author": "EasySQL",
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/easysqlco/eslint-config#readme",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "eslint",
