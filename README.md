@@ -1,29 +1,43 @@
-# EasySQL eslint-config
-This package exports common ESLint and Prettier configuration used by EasySQL packages.
+# @easysql/eslint-config
 
-## Usage
-- Install this package as dev dependency
+Shared ESLint flat config for EasySQL Node-oriented packages.
+
+This package keeps the current lint policy stable and bundles the parser/plugin
+packages it imports. Consumers only need the host tools: `eslint`,
+`typescript`, and `prettier`.
+
+## Installation
 
 ```bash
-npm i -D @easysql/eslint-config
+npm install --save-dev @easysql/eslint-config eslint prettier typescript
 ```
 
-- Create `eslint.config.mjs` in the project root and add shared config
+## Usage
+
+Create `eslint.config.mjs` in the consuming package:
 
 ```js
-import eslintConfigEasySQL from '@easysql/eslint-config';
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import easySqlConfig, { tsLanguageOptions } from "@easysql/eslint-config";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default [
-  ...eslintConfigEasySQL,
+  ...easySqlConfig,
   {
-    rules: {
-      // Add your own rules here
-    }
-  }
+    languageOptions: tsLanguageOptions({
+      project: "tsconfig.eslint.json",
+      tsconfigRootDir: __dirname,
+    }),
+  },
 ];
 ```
 
-#### To generate .d.ts files from .js files
-Generate types of js files and add them to package.json otherwise ts compiler gets angry when use this package in a ts project!
+`tsLanguageOptions()` defaults to `./tsconfig.json` relative to the current
+working directory. Override it when your lint config should use a dedicated
+`tsconfig.eslint.json` or a different root directory.
 
-https://www.typescriptlang.org/docs/handbook/declaration-files/dts-from-js.html
+For React packages, compose this config with
+`@easysql/eslint-config-react`.
