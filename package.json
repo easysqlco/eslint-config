@@ -1,21 +1,33 @@
 {
   "name": "@easysql/eslint-config",
-  "version": "0.0.23",
-  "description": "Exports common ESLint and Prettier configuration used by EasySQL packages",
+  "version": "0.0.24",
+  "description": "Shared ESLint flat config for EasySQL Node-oriented packages",
   "author": "EasySQL",
   "license": "MIT",
   "type": "module",
   "main": "index.js",
   "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/easysqlco/eslint-config.git"
   },
   "homepage": "https://github.com/easysqlco/eslint-config#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "keywords": [
     "eslint",
-    "eslint-config",
-    "typescript-eslint",
+    "eslintconfig",
+    "flat-config",
+    "prettier",
     "easysqlco"
   ],
   "files": [
@@ -25,27 +37,27 @@
     "README.md"
   ],
   "scripts": {
-    "lint": "eslint **/*.{js,ts}"
+    "check:pack": "npm pack --dry-run",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json",
+    "validate": "npm run lint && npm run typecheck && node ./scripts/validate-package.mjs && npm run check:pack"
   },
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/node": "^25.6.0",
-    "eslint": "^10.2.0",
+  "dependencies": {
+    "@eslint/js": "^9.13.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "globals": "^17.4.0",
-    "prettier": "^3.8.2",
-    "typescript": "^5.6.2",
     "typescript-eslint": "^8.58.1"
   },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "eslint": "^9.13.0",
+    "prettier": "^3.8.2",
+    "typescript": "^5.6.2"
+  },
   "peerDependencies": {
-    "@eslint/js": ">= 10",
-    "eslint": ">= 10",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.5",
-    "globals": "^17.4.0",
+    "eslint": ">= 9.7 < 10",
     "prettier": ">= 3",
-    "typescript": ">= 5 < 6",
-    "typescript-eslint": ">= 8"
+    "typescript": ">= 5 < 6"
   }
 }
