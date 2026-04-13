@@ -14,6 +14,11 @@ const packageJson = JSON.parse(
   await readFile(path.join(packageDir, "package.json"), "utf8"),
 );
 
+assert.equal(
+  packageJson.name,
+  "@easysqlco/eslint-config",
+  "package name must use the GitHub Packages scope",
+);
 assert.ok(Array.isArray(sharedConfig), "default export must be a config array");
 assert.equal(
   typeof tsLanguageOptions,
@@ -57,6 +62,11 @@ assert.deepEqual(Object.keys(packageJson.dependencies).sort(), [
 assert.ok(
   packageJson.exports?.["."],
   "package exports must expose the root entry",
+);
+assert.equal(
+  packageJson.publishConfig?.registry,
+  "https://npm.pkg.github.com",
+  "publishConfig.registry must target GitHub Packages",
 );
 
 const eslint = new ESLint({
