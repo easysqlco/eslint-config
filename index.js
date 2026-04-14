@@ -1,7 +1,9 @@
 import globals from "globals";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import eslintPluginPrettier from "eslint-plugin-prettier";
+import eslintConfigPrettier from "eslint-config-prettier";
+import eslintConfigPrettierOverrides from "eslint-config-prettier/prettier";
 
 const SOURCE_FILES = ["**/*.{ts,tsx,js,jsx,mjs,cjs}"];
 const JS_SOURCE_FILES = ["**/*.{js,jsx,mjs,cjs}"];
@@ -64,6 +66,18 @@ const prettierRules = {
   ],
 };
 
+const prettierRecommendedConfig = {
+  name: "@easysqlco/eslint-config/prettier-recommended",
+  plugins: {
+    prettier: eslintPluginPrettier,
+  },
+  rules: {
+    ...eslintConfigPrettier.rules,
+    ...eslintConfigPrettierOverrides.rules,
+    "prettier/prettier": "error",
+  },
+};
+
 export function tsLanguageOptions({
   tsconfigRootDir = process.cwd(),
   project = "./tsconfig.json",
@@ -104,7 +118,7 @@ const sharedConfig = tseslint.config(
     },
     rules: jsOnlyRuleOverrides,
   },
-  eslintPluginPrettierRecommended,
+  prettierRecommendedConfig,
   {
     name: "@easysqlco/eslint-config/prettier",
     rules: prettierRules,
